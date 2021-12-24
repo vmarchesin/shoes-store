@@ -1,0 +1,16 @@
+.header {
+
+  &__container-logo {
+    position: absolute;
+    left: 50px;
+    width: 80px;
+
+    @media (max-width: 716px) {
+        display:none
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

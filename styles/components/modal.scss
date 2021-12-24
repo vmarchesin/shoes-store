@@ -1,0 +1,105 @@
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 600px;
+  height: 700px;
+  padding: 40px;
+  margin: auto;
+  background: white;
+  border-radius: 7px;
+  box-shadow: 0 0 15px 5px #00000087;
+
+  &-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    opacity: .7;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__facture-info {
+    position: relative;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &__date {
+    margin-top: 5px;
+    font-size: 16px;
+    opacity: .6;
+  }
+
+  &__total {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__facture-items {
+    margin-bottom: 35px;
+
+    img {
+      width: 55px;
+      height: 23px;
+    }
+  }
+
+  &__facture-item {
+    margin-bottom: 12px;
+    font-size: 20px;
+    text-align: right;
+
+    span {
+      display: inline-block;
+      width: 50px;
+      margin-left: 30px;
+    }
+
+    &.titles {
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  &__facture-item-name {
+    float: left;
+    width: auto !important;
+    margin-left: 0 !important;
+  }
+
+  &__footer {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__items-quantity {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &__footer-total {
+    width: 125px;
+    margin-left: 35px;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: right;
+  }
+}

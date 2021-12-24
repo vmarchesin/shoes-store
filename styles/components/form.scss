@@ -1,0 +1,87 @@
+.form-container {
+
+}
+
+.form {
+  display: flex;
+  max-width: 720px;
+  width: 100%;
+  padding: 10px;
+  margin: auto;
+  justify-content: space-between;
+  left: 0;
+
+  @media (max-width: 716px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    
+  }
+
+  &__personal-data {
+    width: 320px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    margin-bottom: 25px;
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px 10px 8px;
+      margin-bottom: 15px;
+      border: 0;
+      border-bottom: 1px solid #0000000A;
+    }
+  }
+
+  &__pay {
+    width: 320px;
+    height: 100%;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__card-info-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  &__card-info {
+    margin-bottom: 30px;
+  }
+
+  &__card-try {
+    margin: 8px 0 0;
+    font-size: 12px;
+  }
+
+  &__info-req {
+    height: 20px;
+    color: red;
+  }
+
+  &__transaction-safe {
+    position: relative;
+    top: 5px;
+    margin-top: 16px;
+    font-size: 11px;
+
+    img {
+      width: 10px;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}

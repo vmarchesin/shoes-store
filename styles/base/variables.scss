@@ -1,0 +1,22 @@
+
+/* Breakpoints */
+@custom-media --max-mobile (width < 600px);
+@custom-media --min-tablet (width >= 600px);
+@custom-media --max-tablet (width < 960px);
+@custom-media --min-desktop (width >= 960px);
+@custom-media --max-desktop (width < 1100px);
+@custom-media --min-desktop-large (width >= 1100px);
+@custom-media --min-desktop-xlarge (width >= 1280px);
+@custom-media --min-desktop-xxlarge (width >= 1500px);
+@custom-media --min-desktop-xxxlarge (width >= 1600px);
+@custom-media --panoramic-laptop (min-width: 1281px) and (max-width: 1439px) and (min-device-aspect-ratio: 8/5);
+
+:root {
+  /* Colors */
+  --dark-color: #0F0E17;
+  --light-color: #FFFFFE;
+  --button-color: #FF8906;
+  --text-color: #A7A9BE;
+  --secondary-color: #F25F4C;
+  --tertiary-color: ##e53170;
+}

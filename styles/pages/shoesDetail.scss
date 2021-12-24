@@ -1,0 +1,156 @@
+.detail-shoe {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+
+  &__container-img {
+    width: 50%;
+  }
+
+  &__img {
+    width: 90%;
+    height: 80%;
+    text-align: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__info {
+    width: 50%;
+  }
+
+  &__name {
+    margin-bottom: 15px;
+    font-size: 40px;
+  }
+
+  &__price {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__description {
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+
+  &__add-cart {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  &__quantity-number {
+    display: flex;
+    width: 40px;
+    font-weight: 700;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__quantity {
+    display: flex;
+    width: fit-content;
+    margin-right: 25px;
+    background: white;
+    border: 1px solid black;
+
+    @media (max-width: 466px) {
+      margin-left: 20px;
+    }
+
+    input {
+      width: 40px;
+      font-weight: 600;
+      color: black;
+      text-align: center;
+      border: 1px solid black;
+    }
+
+    &-button {
+      display: flex;
+      width: 40px;
+      cursor: pointer;
+      border: 1px solid black;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 12px;
+      }
+    }
+  }
+
+  &__sizes {
+    display: flex;
+
+    input {
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      margin-right: 10px;
+      border: 2px solid red;
+      border-radius: 0;
+      opacity: 0;
+    }
+
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 40px;
+      height: 40px;
+      border: 1px solid black;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__wishlist {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+
+  .best-sellers {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  .detail-shoe__container-img {
+    width: 100%;
+    height: 400px;
+  }
+
+  .detail-shoe__info {
+    width: 100%;
+  }
+
+  .detail-shoe__add-cart {
+    justify-content: flex-end;
+  }
+
+  .detail-shoe__wishlist {
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .detail-shoe__container-img {
+    height: 300px;
+  }
+}

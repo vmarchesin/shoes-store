@@ -1,0 +1,22 @@
+.cart-total {
+  display: flex;
+  margin-bottom: 30px;
+  font-weight: 700;
+  justify-content: flex-end;
+
+  &__quantity {
+    width: 150px;
+
+    @media (max-width: 936px) {
+      display: none;
+    }
+  }
+
+  &__total {
+    width: 70px;
+  }
+}
+
+.cart-pay-container {
+  text-align: right;
+}
