@@ -6,6 +6,8 @@ import { logout, newUSer, takeUSer, updateWishListUser } from '../redux/user/use
 
 import Layout from '../components/layout/layout';
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+
 const Login = () => {
   const router = useRouter()
 
@@ -27,11 +29,10 @@ const Login = () => {
   const handleSubmitLogin =  async (e) => {
     e.preventDefault()
 
-    let res = await fetch(`/api/userLogin?email=${formData.email}`)
+    let res = await fetch(`${API_SHOES}/profile?email=${formData.email}`)
     res = await res.json()
-    console.log('res', res);
 
-    let response = await fetch(`/api/wishList?email=${formData.email}`)
+    let response = await fetch(`${API_SHOES}/wishList?email=${formData.email}`)
       .then(res => res.json())
       .then(data => response = data)
       .catch(error => console.log(error))
@@ -44,18 +45,19 @@ const Login = () => {
      return router.push('/')
     }
 
+    // Si no esta registrado
     if (!res.exist) {
-      const res = await fetch('/api/userLogin', {
+      const res = await fetch(`${API_SHOES}/profile`, {
       method: 'POST',
       body: JSON.stringify(formData)
-      }).then(res => res.json())
-        .then(response => {
-          if (response.ok === 1) {
-            dispatch(newUSer(formData))
-            router.push('/')
-          }
-        })
-        .catch(error => console.log(error))
+      })
+
+      if (res.status === 200) {
+        dispatch(newUSer(formData))
+        router.push('/')
+      } else {
+        console.error(res?.response)
+      }
     }
   }
 
