@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { SHOES_DATA } from '../../data/shoesData';
 import { getCartListUser, totalAmount } from '../../redux/user/userAction';
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+
 const UseFetchCartList = (profile, dispatch) => {
 
   const [isLoading, setIsLoading] = useState(false)
@@ -14,7 +16,7 @@ const UseFetchCartList = (profile, dispatch) => {
   useEffect(() => {
     (async () => {
       setIsLoading(true)
-      const res = await fetch(`/api/cartlist?email=${profile.email}`)
+      const res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}`)
 
       if (res.status === 200) {
         const response = await res.json()

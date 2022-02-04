@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { SHOES_DATA } from "../../data/shoesData";
 import { addShoeCartList, addShoeToWishList, removeShoeToWishList } from "../../redux/user/userAction";
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+
 const UseDetailShoes = () => {
 
   const router = useRouter()
@@ -32,7 +34,7 @@ const UseDetailShoes = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('/api/bestSellers')
+      const res = await fetch(`${API_SHOES}/bestSellers`)
         .then(res => res.json())
         .then(res => {
           let bestSellers = []
@@ -64,14 +66,14 @@ const UseDetailShoes = () => {
     shoeToDB.quantity = quantity
     shoeToDB.email = profile.email
 
-    const res = await fetch(`/api/cartlist?email=${profile.email}`)
+    const res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}`)
 
     if (res.status === 200) {
       const resJson = await res.json()
 
       if (resJson.length === 0) {
         shoeToDB.isNew = true
-        const res = await fetch("/api/cartlist", {
+        const res = await fetch(`${API_SHOES}/cartlist`, {
           method: 'POST',
           body: JSON.stringify(shoeToDB)
         })
@@ -88,7 +90,7 @@ const UseDetailShoes = () => {
         let isShoeInCart = cartList?.filter(item => item.id === shoe.id)
         
         if (isShoeInCart.length === 0) {
-          const res = await fetch("/api/cartlist", {
+          const res = await fetch(`${API_SHOES}/cartlist`, {
             method: 'POST',
             body: JSON.stringify(shoeToDB)
           })
@@ -102,7 +104,7 @@ const UseDetailShoes = () => {
           isShoeInCart[0].exist = true
           isShoeInCart[0].email = profile.email
 
-          const res = await fetch("/api/cartlist", {
+          const res = await fetch(`${API_SHOES}/cartlist`, {
             method: 'POST',
             body: JSON.stringify(isShoeInCart[0])
           })
@@ -119,7 +121,7 @@ const UseDetailShoes = () => {
     if (stroke === 'black') {
       setStroke('green')
       shoe.email = profile.email
-      const res = await fetch("/api/wishList", {
+      const res = await fetch(`${API_SHOES}/wishList`, {
         method: 'POST',
         body: JSON.stringify(shoe)
       })
@@ -134,7 +136,7 @@ const UseDetailShoes = () => {
       let  existShoe = new Object()
       existShoe.id = shoe.id 
       existShoe.email = profile.email
-      const res = await fetch("/api/wishList", {
+      const res = await fetch(`${API_SHOES}/wishList`, {
         method: 'POST',
         body: JSON.stringify(existShoe)
       })

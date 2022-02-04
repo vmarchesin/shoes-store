@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { updateWishListUser } from "../../redux/user/userAction";
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+
 const UseWishList = (shoe, profile) => {
 
   const dispatch = useDispatch()
@@ -11,7 +13,7 @@ const UseWishList = (shoe, profile) => {
     shoeToDB.quantity = 1
     shoeToDB.email = profile.email
 
-    let res = await fetch(`/api/cartlist?email=${profile.email}`)
+    let res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}`)
     res = await res.json()
     
     if (res[0].cartlist !== undefined) {
@@ -21,13 +23,13 @@ const UseWishList = (shoe, profile) => {
         handleRemove()
 
       } else {
-        const res = await fetch("/api/cartlist", {
+        const res = await fetch(`${API_SHOES}/cartlist`, {
           method: 'POST',
           body: JSON.stringify(shoeToDB)
         })
       }
     } else {
-      const res = await fetch("/api/cartlist", {
+      const res = await fetch(`${API_SHOES}/cartlist`, {
         method: 'POST',
         body: JSON.stringify(shoeToDB)
       })
@@ -42,7 +44,7 @@ const UseWishList = (shoe, profile) => {
       email: profile.email
     }
 
-    const res = await fetch("/api/wishList", {
+    const res = await fetch(`${API_SHOES}/cartlist`, {
       method: 'DELETE',
       body: JSON.stringify(data)
     })

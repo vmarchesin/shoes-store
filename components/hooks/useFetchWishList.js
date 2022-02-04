@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateWishListUser } from '../../redux/user/userAction';
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+
 const UseFetchWishList = (profile) => {
 
   // const profile = useSelector(state => state.user)
@@ -12,7 +14,7 @@ const UseFetchWishList = (profile) => {
   useEffect(() => {
     (async () => {
       setIsLoading(true)
-      await fetch(`/api/wishList?email=${profile.email}`)
+      await fetch(`${API_SHOES}/wishList?email=${profile.email}`)
         .then(res => res.json())
         .then(response => {
           setWishList(response.wishlist)

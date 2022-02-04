@@ -8,6 +8,7 @@ import { CARD_OPTIONS } from "../../data/cardOptionsStyle";
 import { SHOES_DATA } from "../../data/shoesData";
 import { removeCartList } from "../../redux/user/userAction";
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
 
 // TODO: hacer bbdd pedido al concluir el pago
 const StripeCheckoutForm = () => {
@@ -87,7 +88,7 @@ const StripeCheckoutForm = () => {
 
 
     try {
-      const { data: clientSecret } = await axios.post("/api/stripe-payment-intent", {
+      const { data: clientSecret } = await axios.post(`${API_SHOES}/stripe-payment-intent`, {
         amount: profile.totalAmount
       });
 
@@ -149,20 +150,20 @@ const StripeCheckoutForm = () => {
       order.email = profile.email
 
       profile.cartlist.map(item => {
-        const res = fetch('/api/bestSellers', {
+        const res = fetch(`${API_SHOES}/bestSellers`, {
           method: 'POST',
           body: JSON.stringify(item)
         }).then(res => res.json())
         .then(res => console.log(res))
       })
 
-      const res = await fetch('/api/orders', {
+      const res = await fetch(`${API_SHOES}/orders`, {
         method: 'POST',
         body: JSON.stringify(order)
       })
 
       if (res.status === 200) {
-        const response = await fetch('/api/cartlist', {
+        const response = await fetch(`${API_SHOES}/cartlist`, {
           method: 'PUT',
           body: profile.email
         })

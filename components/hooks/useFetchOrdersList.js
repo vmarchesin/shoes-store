@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+
 const UseFetchOrdersList = () => {
   const profile = useSelector(state => state.user)
 
@@ -10,7 +12,7 @@ const UseFetchOrdersList = () => {
   useEffect(() => {
     (async () => {
       setIsLoading(true)
-      const res = await fetch(`/api/orders?email=${profile.email}`)
+      const res = await fetch(`${API_SHOES}/orders?email=${profile.email}`)
         .then(res => res.json())
         .then(response => setData(response))
       

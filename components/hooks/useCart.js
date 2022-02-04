@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux"
 import { removeShoeCartList } from "../../redux/user/userAction"
 
+const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+
 
 const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
 
@@ -13,7 +15,7 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
     shoesList[index].exist = true
     shoesList[index].email = profile.email
 
-    const res = await fetch("/api/cartlist", {
+    const res = await fetch(`${API_SHOES}/cartlist`, {
       method: 'POST',
       body: JSON.stringify(shoesList[index])
     })
@@ -33,7 +35,7 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
     shoesList[index].exist = true
     shoesList[index].email = profile.email
 
-    const res = await fetch("/api/cartlist", {
+    const res = await fetch(`${API_SHOES}/cartlist`, {
       method: 'POST',
       body: JSON.stringify(shoesList[index])
     })
@@ -48,7 +50,7 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
     let data = new Object()
     data.id = id
     data.email = profile.email
-    const res = await fetch(`/api/cartlist?email${profile.email}`, {
+    const res = await fetch(`${API_SHOES}/cartlist?email${profile.email}`, {
       method: 'DELETE',
       body: JSON.stringify(data)
     })
