@@ -12,7 +12,7 @@ const UseFetchOrdersList = () => {
   useEffect(() => {
     (async () => {
       setIsLoading(true)
-      const res = await fetch(`${API_SHOES}/orders?email=${profile.email}`)
+      const res = await fetch(`${API_SHOES}orders?email=${profile.email}`)
         .then(res => res.json())
         .then(response => setData(response))
       

@@ -29,10 +29,10 @@ const Login = () => {
   const handleSubmitLogin =  async (e) => {
     e.preventDefault()
 
-    let res = await fetch(`${API_SHOES}/profile?email=${formData.email}`)
+    let res = await fetch(`${API_SHOES}profile?email=${formData.email}`)
     res = await res.json()
 
-    let response = await fetch(`${API_SHOES}/wishList?email=${formData.email}`)
+    let response = await fetch(`${API_SHOES}wishList?email=${formData.email}`)
       .then(res => res.json())
       .then(data => response = data)
       .catch(error => console.log(error))
@@ -47,7 +47,7 @@ const Login = () => {
 
     // Si no esta registrado
     if (!res.exist) {
-      const res = await fetch(`${API_SHOES}/profile`, {
+      const res = await fetch(`${API_SHOES}profile`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

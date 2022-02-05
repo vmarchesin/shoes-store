@@ -14,7 +14,7 @@ const UseFetchWishList = (profile) => {
   useEffect(() => {
     (async () => {
       setIsLoading(true)
-      await fetch(`${API_SHOES}/wishList?email=${profile.email}`)
+      await fetch(`${API_SHOES}wishList?email=${profile.email}`)
         .then(res => res.json())
         .then(response => {
           setWishList(response.wishlist)

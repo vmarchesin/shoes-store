@@ -16,7 +16,7 @@ const UseFetchCartList = (profile, dispatch) => {
   useEffect(() => {
     (async () => {
       setIsLoading(true)
-      const res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}`)
+      const res = await fetch(`${API_SHOES}cartlist?email=${profile.email}`)
 
       if (res.status === 200) {
         const response = await res.json()

@@ -150,7 +150,7 @@ const StripeCheckoutForm = () => {
       order.email = profile.email
 
       profile.cartlist.map(item => {
-        const res = fetch(`${API_SHOES}/bestSellers`, {
+        const res = fetch(`${API_SHOES}bestSellers`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -161,7 +161,7 @@ const StripeCheckoutForm = () => {
         .then(res => console.log(res))
       })
 
-      const res = await fetch(`${API_SHOES}/orders`, {
+      const res = await fetch(`${API_SHOES}orders`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -171,7 +171,7 @@ const StripeCheckoutForm = () => {
       })
 
       if (res.status === 200) {
-        const response = await fetch(`${API_SHOES}/cartlist`, {
+        const response = await fetch(`${API_SHOES}cartlist`, {
           method: 'PUT',
           body: profile.email
         })

@@ -15,7 +15,7 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
     shoesList[index].exist = true
     shoesList[index].email = profile.email
 
-    const res = await fetch(`${API_SHOES}/cartlist`, {
+    const res = await fetch(`${API_SHOES}cartlist`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -39,7 +39,7 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
     shoesList[index].exist = true
     shoesList[index].email = profile.email
 
-    const res = await fetch(`${API_SHOES}/cartlist`, {
+    const res = await fetch(`${API_SHOES}cartlist`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -58,7 +58,7 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
     let data = new Object()
     data.id = id
     data.email = profile.email
-    const res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}&id=${data.id}`, {
+    const res = await fetch(`${API_SHOES}cartlist?email=${profile.email}&id=${data.id}`, {
       method: 'DELETE',
       // body: JSON.stringify(data)
     })

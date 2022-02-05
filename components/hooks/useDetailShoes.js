@@ -34,7 +34,7 @@ const UseDetailShoes = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`${API_SHOES}/bestSellers`)
+      const res = await fetch(`${API_SHOES}bestSellers`)
         .then(res => res.json())
         .then(res => {
           let bestSellers = []
@@ -66,14 +66,14 @@ const UseDetailShoes = () => {
     shoeToDB.quantity = quantity
     shoeToDB.email = profile.email
 
-    const res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}`)
+    const res = await fetch(`${API_SHOES}cartlist?email=${profile.email}`)
 
     if (res.status === 200) {
       const resJson = await res.json()
 
       if (resJson.length === 0) {
         shoeToDB.isNew = true
-        const res = await fetch(`${API_SHOES}/cartlist`, {
+        const res = await fetch(`${API_SHOES}cartlist`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -94,7 +94,7 @@ const UseDetailShoes = () => {
         let isShoeInCart = cartList?.filter(item => item.id === shoe.id)
 
         if (isShoeInCart.length === 0) {
-          const res = await fetch(`${API_SHOES}/cartlist`, {
+          const res = await fetch(`${API_SHOES}cartlist`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
@@ -111,7 +111,7 @@ const UseDetailShoes = () => {
           isShoeInCart[0].exist = true
           isShoeInCart[0].email = profile.email
 
-          const res = await fetch(`${API_SHOES}/cartlist`, {
+          const res = await fetch(`${API_SHOES}cartlist`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
@@ -132,7 +132,7 @@ const UseDetailShoes = () => {
     if (stroke === 'black') {
       setStroke('green')
       shoe.email = profile.email
-      const res = await fetch(`${API_SHOES}/wishList`, {
+      const res = await fetch(`${API_SHOES}wishList`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -151,7 +151,7 @@ const UseDetailShoes = () => {
       let  existShoe = new Object()
       existShoe.id = shoe.id 
       existShoe.email = profile.email
-      const res = await fetch(`${API_SHOES}/wishList`, {
+      const res = await fetch(`${API_SHOES}wishList`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
