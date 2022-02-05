@@ -88,7 +88,7 @@ const StripeCheckoutForm = () => {
 
 
     try {
-      const { data: clientSecret } = await axios.post(`${API_SHOES}/stripe-payment-intent`, {
+      const { data: clientSecret } = await axios.post(`api/stripe-payment-intent`, {
         amount: profile.totalAmount
       });
 
@@ -152,6 +152,10 @@ const StripeCheckoutForm = () => {
       profile.cartlist.map(item => {
         const res = fetch(`${API_SHOES}/bestSellers`, {
           method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify(item)
         }).then(res => res.json())
         .then(res => console.log(res))
@@ -159,6 +163,10 @@ const StripeCheckoutForm = () => {
 
       const res = await fetch(`${API_SHOES}/orders`, {
         method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(order)
       })
 

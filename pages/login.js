@@ -48,8 +48,12 @@ const Login = () => {
     // Si no esta registrado
     if (!res.exist) {
       const res = await fetch(`${API_SHOES}/profile`, {
-      method: 'POST',
-      body: JSON.stringify(formData)
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       })
 
       if (res.status === 200) {

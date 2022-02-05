@@ -17,6 +17,10 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
 
     const res = await fetch(`${API_SHOES}/cartlist`, {
       method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(shoesList[index])
     })
 
@@ -37,6 +41,10 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
 
     const res = await fetch(`${API_SHOES}/cartlist`, {
       method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(shoesList[index])
     })
 
@@ -50,9 +58,9 @@ const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {
     let data = new Object()
     data.id = id
     data.email = profile.email
-    const res = await fetch(`${API_SHOES}/cartlist?email${profile.email}`, {
+    const res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}&id=${data.id}`, {
       method: 'DELETE',
-      body: JSON.stringify(data)
+      // body: JSON.stringify(data)
     })
 
     if (res.status === 200) {

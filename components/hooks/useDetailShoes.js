@@ -75,6 +75,10 @@ const UseDetailShoes = () => {
         shoeToDB.isNew = true
         const res = await fetch(`${API_SHOES}/cartlist`, {
           method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify(shoeToDB)
         })
 
@@ -88,24 +92,31 @@ const UseDetailShoes = () => {
         const cartList = resJson[0].cartlist
         
         let isShoeInCart = cartList?.filter(item => item.id === shoe.id)
-        
+
         if (isShoeInCart.length === 0) {
           const res = await fetch(`${API_SHOES}/cartlist`, {
             method: 'POST',
-            body: JSON.stringify(shoeToDB)
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+             body: JSON.stringify(shoeToDB)
           })
 
           delete shoeToDB.email
           dispatch(addShoeCartList(shoeToDB))
           setIsLoading(false)
         } else {
-          
           isShoeInCart[0].quantity = isShoeInCart[0].quantity + quantity
           isShoeInCart[0].exist = true
           isShoeInCart[0].email = profile.email
 
           const res = await fetch(`${API_SHOES}/cartlist`, {
             method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
             body: JSON.stringify(isShoeInCart[0])
           })
           dispatch(addShoeCartList(shoeToDB))
@@ -123,6 +134,10 @@ const UseDetailShoes = () => {
       shoe.email = profile.email
       const res = await fetch(`${API_SHOES}/wishList`, {
         method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(shoe)
       })
 
@@ -138,6 +153,10 @@ const UseDetailShoes = () => {
       existShoe.email = profile.email
       const res = await fetch(`${API_SHOES}/wishList`, {
         method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(existShoe)
       })
 

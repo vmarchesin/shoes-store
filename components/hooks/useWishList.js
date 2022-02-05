@@ -15,8 +15,18 @@ const UseWishList = (shoe, profile) => {
 
     let res = await fetch(`${API_SHOES}/cartlist?email=${profile.email}`)
     res = await res.json()
-    
-    if (res[0].cartlist !== undefined) {
+
+    if (res.length === 0) {
+      const res = await fetch(`${API_SHOES}/cartlist`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(shoeToDB)
+      })
+    } else if (res[0].cartlist !== undefined) {
+
       let isShoeInCart = res[0].cartlist.filter(item => item.id === shoe.id)
       if (isShoeInCart.length > 0) {
         // si existe en cart borramos sin sumar
@@ -25,28 +35,31 @@ const UseWishList = (shoe, profile) => {
       } else {
         const res = await fetch(`${API_SHOES}/cartlist`, {
           method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify(shoeToDB)
         })
       }
     } else {
+      console.log("otro Else")
       const res = await fetch(`${API_SHOES}/cartlist`, {
         method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(shoeToDB)
       })
     }
     handleRemove()
   }
 
-
   const handleRemove = async () => {
-    let data = {
-      id: shoe.id,
-      email: profile.email
-    }
 
-    const res = await fetch(`${API_SHOES}/cartlist`, {
+    const res = await fetch(`${API_SHOES}/wishlist?email=${profile.email}&id=${shoe.id}`, {
       method: 'DELETE',
-      body: JSON.stringify(data)
     })
 
     if (res.ok == 1) {
