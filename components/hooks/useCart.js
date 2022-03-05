@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { removeShoeCartList } from "../../redux/user/userAction"
 
-const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+const API_SHOES = process.env.API_URL
 
 
 const UseCart = (shoesList, setShoesList, refresh, setFresh, profile ) => {

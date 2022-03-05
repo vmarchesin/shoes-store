@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateWishListUser } from '../../redux/user/userAction';
 
-const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+const API_SHOES = process.env.API_URL
 
 const UseFetchWishList = (profile) => {
 

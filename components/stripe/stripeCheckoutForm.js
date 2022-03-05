@@ -8,7 +8,7 @@ import { CARD_OPTIONS } from "../../data/cardOptionsStyle";
 import { SHOES_DATA } from "../../data/shoesData";
 import { removeCartList } from "../../redux/user/userAction";
 
-const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+const API_SHOES = process.env.API_URL
 
 // TODO: hacer bbdd pedido al concluir el pago
 const StripeCheckoutForm = () => {

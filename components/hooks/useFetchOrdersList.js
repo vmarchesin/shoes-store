@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+const API_SHOES = process.env.API_URL
 
 const UseFetchOrdersList = () => {
   const profile = useSelector(state => state.user)

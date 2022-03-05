@@ -6,7 +6,7 @@ import { logout, newUSer, takeUSer, updateWishListUser } from '../redux/user/use
 
 import Layout from '../components/layout/layout';
 
-const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+const API_SHOES = process.env.API_URL
 
 const Login = () => {
   const router = useRouter()

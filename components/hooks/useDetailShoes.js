@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SHOES_DATA } from "../../data/shoesData";
 import { addShoeCartList, addShoeToWishList, removeShoeToWishList } from "../../redux/user/userAction";
 
-const API_SHOES = process.env.NEXT_PUBLIC_API_URL
+const API_SHOES = process.env.API_URL
 
 const UseDetailShoes = () => {
 
