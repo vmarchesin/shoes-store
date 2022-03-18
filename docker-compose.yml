@@ -1,19 +1,46 @@
 version: "3.9"
 services:
-  frontend:
+  frontend1:
     working_dir: /app
     restart: unless-stopped
     build:
       context: .
     env_file:
       - .env
+    environment:
+      - NEXT_PUBLIC_FOO=carlos
     volumes:
       - .:/app:delegated
     command: npm run dev
     ports:
-      - 5000:5000
+      - 5001:3000
     networks:
       - shoes
+
+  frontend2:
+    working_dir: /app
+    restart: unless-stopped
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      - NEXT_PUBLIC_FOO=vinicius
+    volumes:
+      - .:/app:delegated
+    command: npm run dev
+    ports:
+      - 5002:3000
+    networks:
+      - shoes
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - frontend1
+      - frontend2
 
 networks:
   shoes:
