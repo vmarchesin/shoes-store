@@ -5,3 +5,9 @@ To install dependencies, you have to run yarn install in the root of your direct
 ### Link to project ###
 
 * [shoes store demo ](https://shoes-store-demo.vercel.app/)
+
+### Get your IP
+
+```bash
+ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}'
+```
