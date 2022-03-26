@@ -5,6 +5,7 @@
     "jest": true
   },
   "extends": ["next/babel","next/core-web-vitals"],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018
   },
