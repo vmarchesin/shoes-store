@@ -10,7 +10,14 @@ const config = {
   // Or async function
   module.exports = async () => {
     return {
+      setupFilesAfterEnv: ["./jest.setup.js"],
       verbose: true,
-      testEnvironment: "jsdom"
+      testEnvironment: "jsdom",
+      setupFilesAfterEnv: ["./jest.setup.js"],
+      moduleNameMapper: {
+        "^@components(.*)$": "<rootDir>/components$1",
+        "^@pages(.*)$": "<rootDir>/pages$1",
+        "^@hooks(.*)$": "<rootDir>/hooks$1",
+      },
     };
   };
