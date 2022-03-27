@@ -4,9 +4,9 @@ const config = {
     verbose: true,
     testEnvironment: "jsdom"
   };
-  
+
   module.exports = config;
-  
+
   // Or async function
   module.exports = async () => {
     return {
